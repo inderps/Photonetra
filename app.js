@@ -12,7 +12,7 @@ Ext.application({
         'Ext.MessageBox'
     ],
 
-    views: ['Main'],
+    views: ['Main', 'Login'],
 
     icon: {
         '57': 'resources/icons/Icon.png',
@@ -37,7 +37,7 @@ Ext.application({
         Ext.fly('appLoadingIndicator').destroy();
 
         // Initialize the main view
-        Ext.Viewport.add(Ext.create('Photonetra.view.Main'));
+        Ext.Viewport.add(Ext.create('Photonetra.view.Login'));
     },
 
     onUpdated: function() {
