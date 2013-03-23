@@ -27,6 +27,7 @@ Ext.define('Photonetra.view.Login', {
         fullscreen: true,
         xtype: 'login',
         height: '100%',
+        name: 'loginPanel',
         layout: {
             type: 'vbox',
             align: 'start',

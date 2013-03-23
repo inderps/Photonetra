@@ -12,9 +12,10 @@ Ext.define('Photonetra.controller.Users', {
         },
 
         refs: {
+            loginPanel: 'panel[name=loginPanel]',
             loginButton: 'button[name=loginButton]',
-            usernameField: 'emailfield[name=loginButton]',
-            passwordField: 'passwordfield[name=loginButton]',
+            emailField: 'emailfield[name=email]',
+            passwordField: 'passwordfield[name=password]'
         },
 
         routes: {
@@ -34,6 +35,13 @@ Ext.define('Photonetra.controller.Users', {
     },
 
     doLogin: function() {
-        console.log("Login")
+        var user =
+            Ext.create('Photonetra.model.User', {
+                email: this.getEmailField()._value,
+                password: this.getPasswordField()._value
+            });
+//        this.getLoginPanel().setMasked(true);
+        user.authenticate();
+        console.log(user);
     }
 });
