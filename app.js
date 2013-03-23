@@ -12,6 +12,7 @@ Ext.application({
         'Ext.MessageBox'
     ],
 
+    controllers: ['Users'],
     views: ['Main', 'Login'],
 
     icon: {
@@ -35,9 +36,8 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-
-        // Initialize the main view
-        Ext.Viewport.add(Ext.create('Photonetra.view.Login'));
+        this.redirectTo('login');
+//        this.getController("Users").new();
     },
 
     onUpdated: function() {
