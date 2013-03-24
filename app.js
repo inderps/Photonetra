@@ -13,7 +13,7 @@ Ext.application({
     ],
 
     controllers: ['Users'],
-    views: ['Main', 'Login'],
+    views: ['Login', 'Menu', 'Main'],
     models: ['User'],
 
     icon: {
@@ -37,7 +37,8 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-        this.redirectTo('login');
+        Ext.Viewport.add(Ext.create('Photonetra.view.Main'));
+//        this.redirectTo('login');
 //        this.getController("Users").new();
     },
 

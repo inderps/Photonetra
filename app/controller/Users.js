@@ -43,6 +43,7 @@ Ext.define('Photonetra.controller.Users', {
         Ext.Viewport.setMasked(true);
         user.authenticate(function(isValid) {
             Ext.Viewport.setMasked(false);
+            Photonetra.app.redirectTo('login');
             //        console.log(user);
         });
     }
