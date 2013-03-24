@@ -2,6 +2,10 @@ Ext.define('Photonetra.controller.Application', {
     extend: 'Ext.app.Controller',
 
     config: {
+        before: {
+            new: 'authenticate'
+        },
+
         refs: {
             main: 'mainview',
             homeMenuList: 'homeMenuList'
@@ -20,6 +24,10 @@ Ext.define('Photonetra.controller.Application', {
         routes: {
             'home': 'index'
         }
+    },
+
+    authenticate: function(action) {
+        action.resume();
     },
 
     index: function() {

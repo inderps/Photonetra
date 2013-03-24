@@ -35,16 +35,40 @@ Ext.define('Photonetra.controller.Users', {
     },
 
     doLogin: function() {
-        var user =
-            Ext.create('Photonetra.model.User', {
+        Ext.Viewport.setMasked(true);
+        Ext.Ajax.request({
+            url: 'http://localhost:3000/users/authenticate',
+            method: 'POST',
+            withCredentials: true,
+            useDefaultXhrHeader: false,
+            disableCaching: false,
+
+            params: {
                 email: this.getEmailField()._value,
                 password: this.getPasswordField()._value
-            });
-        Ext.Viewport.setMasked(true);
-        user.authenticate(function(isValid) {
-            Ext.Viewport.setMasked(false);
-            Photonetra.app.redirectTo('login');
-            //        console.log(user);
+            },
+
+            success: function(response) {
+                var user = Ext.create('Ext.data.Store', {
+                    model: "Photonetra.model.User"
+                });
+                user.getProxy().clear();
+
+                var responseUser = Ext.JSON.decode(response.responseText);
+                var rec = {
+                    id : responseUser.id,
+                    name: responseUser.name
+                };
+
+                user.add(rec);
+                user.sync();
+                Ext.Viewport.setMasked(false);
+            },
+
+            failure: function(response) {
+                Ext.Viewport.setMasked(false);
+            }
         });
+//        Photonetra.app.redirectTo('login');
     }
 });

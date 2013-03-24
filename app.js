@@ -37,7 +37,7 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-        this.redirectTo('home');
+        this.redirectTo('login');
 //        this.getController("Users").new();
     },
 
