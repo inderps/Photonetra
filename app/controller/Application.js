@@ -2,10 +2,6 @@ Ext.define('Photonetra.controller.Application', {
     extend: 'Ext.app.Controller',
 
     config: {
-        before: {
-            new: 'authenticate'
-        },
-
         refs: {
             main: 'mainview',
             homeMenuList: 'homeMenuList'
@@ -26,12 +22,14 @@ Ext.define('Photonetra.controller.Application', {
         }
     },
 
-    authenticate: function(action) {
-        action.resume();
+    isLoggedIn: function() {
+        return false;
     },
 
     index: function() {
-        Ext.Viewport.add(Ext.create('Photonetra.view.Main'));
+        var mainPanel = Ext.create('Photonetra.view.Main');
+        Ext.Viewport.add(mainPanel);
+        Ext.Viewport.setActiveItem(mainPanel);
     },
 
     onMainPush: function(view, item) {

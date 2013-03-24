@@ -35,10 +35,9 @@ Ext.application({
     },
 
     launch: function() {
-        // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-        this.redirectTo('login');
-//        this.getController("Users").new();
+//        this.redirectTo('login'); ??not using routes for now becuase of it calling the method twice <BUG>
+        this.getController("Users").renderLogin();
     },
 
     onUpdated: function() {

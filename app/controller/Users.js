@@ -2,7 +2,7 @@ Ext.define('Photonetra.controller.Users', {
     extend: 'Ext.app.Controller',
     config: {
         before: {
-            new: 'authenticate'
+            renderLogin: 'authenticate'
         },
 
         control: {
@@ -19,23 +19,36 @@ Ext.define('Photonetra.controller.Users', {
         },
 
         routes: {
-            'login': 'new'
+            'login': 'renderLogin'
         }
     },
 
-    new: function() {
-        Ext.Viewport.add(Ext.create('Photonetra.view.Login'));
+    renderLogin: function() {
+        if(!this.loginPanel){
+            this.loginPanel = Ext.create('Photonetra.view.Login');
+        }
+        Ext.Viewport.add(this.loginPanel);
+        this.authenticate(); //right now not using routes, so before function is not working for now
     },
 
     init: function() {
     },
 
     authenticate: function(action) {
-       action.resume();
+//        var user = Ext.create('Ext.data.Store', {
+//            model: "Photonetra.model.User"
+//        });
+//        user.load();
+//        console.log(user);
+//       action.resume();
     },
 
     doLogin: function() {
         Ext.Viewport.setMasked(true);
+        var user = Ext.create('Ext.data.Store', {
+            model: "Photonetra.model.User"
+        });
+        user.getProxy().clear();
         Ext.Ajax.request({
             url: 'http://localhost:3000/users/authenticate',
             method: 'POST',
@@ -49,26 +62,20 @@ Ext.define('Photonetra.controller.Users', {
             },
 
             success: function(response) {
-                var user = Ext.create('Ext.data.Store', {
-                    model: "Photonetra.model.User"
-                });
-                user.getProxy().clear();
-
                 var responseUser = Ext.JSON.decode(response.responseText);
                 var rec = {
                     id : responseUser.id,
                     name: responseUser.name
                 };
-
                 user.add(rec);
                 user.sync();
                 Ext.Viewport.setMasked(false);
+                Photonetra.app.getController("Application").index();
             },
 
             failure: function(response) {
                 Ext.Viewport.setMasked(false);
             }
         });
-//        Photonetra.app.redirectTo('login');
     }
 });
