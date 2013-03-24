@@ -15,6 +15,7 @@ Ext.application({
     controllers: ['Users', 'Application'],
     views: ['Login', 'Menu', 'Main'],
     models: ['User'],
+    stores: ['User'],
 
     icon: {
         '57': 'resources/icons/Icon.png',

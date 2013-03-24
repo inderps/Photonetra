@@ -1,9 +1,9 @@
 Ext.define('Photonetra.controller.Users', {
     extend: 'Ext.app.Controller',
     config: {
-        before: {
-            renderLogin: 'authenticate'
-        },
+//        before: {
+//            renderLogin: 'authenticate'
+//        },
 
         control: {
             loginButton: {
@@ -24,31 +24,26 @@ Ext.define('Photonetra.controller.Users', {
     },
 
     renderLogin: function() {
-        if(!this.loginPanel){
-            this.loginPanel = Ext.create('Photonetra.view.Login');
+        if(this.isLoggedIn()) {//right now not using routes, so before function is not working for now
+            Photonetra.app.getController("Application").index();
         }
-        Ext.Viewport.add(this.loginPanel);
-        this.authenticate(); //right now not using routes, so before function is not working for now
+        else {
+            Ext.Viewport.add(Ext.create('Photonetra.view.Login'));
+        }
     },
 
     init: function() {
     },
 
-    authenticate: function(action) {
-//        var user = Ext.create('Ext.data.Store', {
-//            model: "Photonetra.model.User"
-//        });
-//        user.load();
-//        console.log(user);
+    isLoggedIn: function(action) {
+        var user = Ext.getStore('userStore');
+        user.load();
+        return user.getCount() != 0;
 //       action.resume();
     },
 
     doLogin: function() {
         Ext.Viewport.setMasked(true);
-        var user = Ext.create('Ext.data.Store', {
-            model: "Photonetra.model.User"
-        });
-        user.getProxy().clear();
         Ext.Ajax.request({
             url: 'http://localhost:3000/users/authenticate',
             method: 'POST',
@@ -64,9 +59,11 @@ Ext.define('Photonetra.controller.Users', {
             success: function(response) {
                 var responseUser = Ext.JSON.decode(response.responseText);
                 var rec = {
-                    id : responseUser.id,
+                    user_id : responseUser.id,
                     name: responseUser.name
                 };
+                var user = Ext.getStore('userStore');
+                user.getProxy().clear();
                 user.add(rec);
                 user.sync();
                 Ext.Viewport.setMasked(false);
