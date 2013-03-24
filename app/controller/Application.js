@@ -27,6 +27,9 @@ Ext.define('Photonetra.controller.Application', {
     },
 
     index: function() {
+        var userStore = Ext.getStore('userStore');
+        userStore.load();
+        this.loggedInUser = userStore.data.all[0].data;
         var mainPanel = Ext.create('Photonetra.view.Main');
         Ext.Viewport.add(mainPanel);
         Ext.Viewport.setActiveItem(mainPanel);
