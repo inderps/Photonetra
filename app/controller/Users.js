@@ -40,8 +40,10 @@ Ext.define('Photonetra.controller.Users', {
                 email: this.getEmailField()._value,
                 password: this.getPasswordField()._value
             });
-//        this.getLoginPanel().setMasked(true);
-        user.authenticate();
-        console.log(user);
+        Ext.Viewport.setMasked(true);
+        user.authenticate(function(isValid) {
+            Ext.Viewport.setMasked(false);
+            //        console.log(user);
+        });
     }
 });
