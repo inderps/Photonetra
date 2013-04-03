@@ -13,9 +13,9 @@ Ext.application({
     ],
 
     controllers: ['Users', 'Application'],
-    views: ['Login', 'Menu', 'Main'],
-    models: ['User'],
-    stores: ['User'],
+    views: ['Login', 'Menu', 'Main', 'Clients'],
+    models: ['User', 'ClientOnline', 'ClientOffline'],
+    stores: ['User', 'Client'],
 
     icon: {
         '57': 'resources/icons/Icon.png',
@@ -38,6 +38,10 @@ Ext.application({
     launch: function() {
         Ext.fly('appLoadingIndicator').destroy();
 //        this.redirectTo('login'); ??not using routes for now becuase of it calling the method twice <BUG>
+//        var clientStore = Ext.getStore('clientStore');
+//        clientStore.load();
+//        var clientList = Ext.create('Photonetra.view.Clients');
+//        clientList.setStore(clientStore);
         this.getController("Users").renderLogin();
     },
 

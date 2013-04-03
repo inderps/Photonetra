@@ -8,6 +8,9 @@ Ext.define('Photonetra.view.Main', {
 
     config: {
         autoDestroy: false,
+        navigationBar: {
+            title: "sss"
+        },
 
 //        navigationBar: {
 //            ui: 'sencha',
@@ -47,7 +50,11 @@ Ext.define('Photonetra.view.Main', {
 //        },
 
         items: [
-            { xtype: 'homeMenuList' }
+            {
+                title: "Photonetra",
+                xtype: 'homeMenuList'
+
+            }
         ]
     }
 });

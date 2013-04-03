@@ -3,8 +3,8 @@ Ext.define('Photonetra.view.Menu', {
     xtype: 'homeMenuList',
 
     config: {
-        title: 'Photonetra',
-            fields: ['item'],
+        fullscreen: true,
+        fields: ['item'],
             data: [
                 {item: 'Clients'},
                 {item: 'Shoots'},

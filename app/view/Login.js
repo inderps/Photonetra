@@ -1,26 +1,3 @@
-//Ext.define('Ext.form.Panel', {
-//    fullscreen: true,
-//    items: [{
-//        xtype: 'fieldset',
-//        items: [
-//            {
-//                xtype: 'textfield',
-//                name : 'name',
-//                label: 'Name'
-//            },
-//            {
-//                xtype: 'emailfield',
-//                name : 'email',
-//                label: 'Email'
-//            },
-//            {
-//                xtype: 'passwordfield',
-//                name : 'password',
-//                label: 'Password'
-//            }
-//        ]
-//    }]
-//});
 Ext.define('Photonetra.view.Login', {
     extend: 'Ext.Panel',
     config: {
@@ -68,7 +45,7 @@ Ext.define('Photonetra.view.Login', {
                             {
                                 xtype: 'emailfield',
                                 name : 'email',
-                                placeHolder: 'Enter your email',
+                                placeHolder: 'Enter your email'
 //                                height: '50%'
                             },
                             {
