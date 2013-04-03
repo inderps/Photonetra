@@ -42,6 +42,15 @@ Ext.define('Photonetra.controller.Application', {
     },
 
     onMenuSelect: function(list, index, node, record) {
+        if(record.data.item == "Clients") {
+            if (!this.clientList) {
+                this.clientList =  Ext.create('Photonetra.view.Clients');
+            }
+            var clientStore = Ext.getStore('clientStore');
+            clientStore.load();
+            this.clientList.setStore(clientStore);
+            this.getMain().push(this.clientList);
+        }
 //
 //        if (!this.showContact) {
 //            this.showContact = Ext.create('AddressBook.view.contact.Show');

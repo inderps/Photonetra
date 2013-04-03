@@ -38,10 +38,6 @@ Ext.application({
     launch: function() {
         Ext.fly('appLoadingIndicator').destroy();
 //        this.redirectTo('login'); ??not using routes for now becuase of it calling the method twice <BUG>
-//        var clientStore = Ext.getStore('clientStore');
-//        clientStore.load();
-//        var clientList = Ext.create('Photonetra.view.Clients');
-//        clientList.setStore(clientStore);
         this.getController("Users").renderLogin();
     },
 

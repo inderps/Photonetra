@@ -9,7 +9,6 @@ Ext.define('Photonetra.view.Main', {
     config: {
         autoDestroy: false,
         navigationBar: {
-            title: "sss"
         },
 
 //        navigationBar: {
