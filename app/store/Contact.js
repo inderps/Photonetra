@@ -1,8 +1,8 @@
-Ext.define('Photonetra.store.Client', {
+Ext.define('Photonetra.store.Contact', {
     extend: "Ext.data.Store",
     config: {
-        storeId: 'clientStore',
-        model: 'Photonetra.model.ClientOnline',
+        storeId: 'contactStore',
+        model: 'Photonetra.model.ContactOnline',
         grouper: {
             groupFn: function(record) {
                 return record.get('name')[0];

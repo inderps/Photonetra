@@ -13,9 +13,9 @@ Ext.application({
     ],
 
     controllers: ['Users', 'Application'],
-    views: ['Login', 'Menu', 'Main', 'Clients'],
-    models: ['User', 'ClientOnline', 'ClientOffline'],
-    stores: ['User', 'Client'],
+    views: ['Login', 'Menu', 'Main', 'Contacts'],
+    models: ['User', 'ContactOnline', 'ContactOffline'],
+    stores: ['User', 'Contact'],
 
     icon: {
         '57': 'resources/icons/Icon.png',

@@ -6,7 +6,7 @@ Ext.define('Photonetra.view.Menu', {
         fullscreen: true,
         fields: ['item'],
             data: [
-                {item: 'Clients'},
+                {item: 'Contacts'},
                 {item: 'Shoots'},
                 {item: 'Delivery'},
                 {item: 'Payments'}

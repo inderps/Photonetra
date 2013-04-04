@@ -42,14 +42,14 @@ Ext.define('Photonetra.controller.Application', {
     },
 
     onMenuSelect: function(list, index, node, record) {
-        if(record.data.item == "Clients") {
-            if (!this.clientList) {
-                this.clientList =  Ext.create('Photonetra.view.Clients');
+        if(record.data.item == "Contacts") {
+            if (!this.contactList) {
+                this.contactList =  Ext.create('Photonetra.view.Contacts');
             }
-            var clientStore = Ext.getStore('clientStore');
-            clientStore.load();
-            this.clientList.items.get("clientListId").setStore(clientStore);
-            this.getMain().push(this.clientList);
+            var contactStore = Ext.getStore('contactStore');
+            contactStore.load();
+            this.contactList.items.get("contactListId").setStore(contactStore);
+            this.getMain().push(this.contactList);
         }
     }
 });

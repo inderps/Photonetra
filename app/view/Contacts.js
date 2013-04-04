@@ -1,18 +1,18 @@
-Ext.define('Photonetra.view.ClientsList', {
+Ext.define('Photonetra.view.ContactsList', {
     extend: 'Ext.List',
-    xtype: 'clientsList',
+    xtype: 'contactsList',
 
     config: {
         fullscreen: true,
         itemTpl: '<div class="contact">{name}</div>',
         grouped     : true,
         indexBar    : true,
-        store: 'Clients',
+        store: 'Contacts',
         hideOnMaskTap: false
     }
 });
 
-Ext.define('Photonetra.view.Clients', {
+Ext.define('Photonetra.view.Contacts', {
     extend: 'Ext.TabPanel',
 
     config: {
@@ -28,8 +28,8 @@ Ext.define('Photonetra.view.Clients', {
         {
             title: 'All',
             iconCls: 'user',
-            xtype: 'clientsList',
-            id: 'clientListId'
+            xtype: 'contactsList',
+            id: 'contactListId'
         },
         {
             title: 'Add',
