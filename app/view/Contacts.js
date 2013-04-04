@@ -14,6 +14,7 @@ Ext.define('Photonetra.view.ContactsList', {
 
 Ext.define('Photonetra.view.Contacts', {
     extend: 'Ext.TabPanel',
+    xtype: 'contactsPanel',
 
     config: {
 

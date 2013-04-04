@@ -14,6 +14,9 @@ Ext.define('Photonetra.controller.Application', {
             },
             homeMenuList: {
                 itemtap: 'onMenuSelect'
+            },
+            contactsList: {
+                itemtap: 'onAllContactSelect'
             }
         },
 
@@ -36,6 +39,7 @@ Ext.define('Photonetra.controller.Application', {
     },
 
     onMainPush: function(view, item) {
+
     },
 
     onMainPop: function(view, item) {
@@ -43,13 +47,17 @@ Ext.define('Photonetra.controller.Application', {
 
     onMenuSelect: function(list, index, node, record) {
         if(record.data.item == "Contacts") {
-            if (!this.contactList) {
-                this.contactList =  Ext.create('Photonetra.view.Contacts');
+            if (!this.contactsPanel) {
+                this.contactsPanel =  Ext.create('Photonetra.view.Contacts');
             }
             var contactStore = Ext.getStore('contactStore');
             contactStore.load();
-            this.contactList.items.get("contactListId").setStore(contactStore);
-            this.getMain().push(this.contactList);
+            this.contactsPanel.items.get("contactListId").setStore(contactStore);
+            this.getMain().push(this.contactsPanel);
         }
+    },
+
+    onAllContactSelect: function(list, index, node, record) {
+        console.log(record.data.id)
     }
 });
