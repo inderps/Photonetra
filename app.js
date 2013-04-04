@@ -51,5 +51,17 @@ Ext.application({
                 }
             }
         );
+    },
+
+    getServiceHostUrl: function() {
+        return "http://localhost:3000/"
+    },
+
+    setLoadedUser: function(user) {
+        this.user = user;
+    },
+
+    getLoadedUser: function() {
+      return this.user;
     }
 });

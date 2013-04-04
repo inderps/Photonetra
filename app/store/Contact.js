@@ -10,8 +10,7 @@ Ext.define('Photonetra.store.Contact', {
         },
         proxy: {
             timeout: 3000,
-            type: 'ajax',
-            url: 'http://localhost:3000/users/1/contacts'
+            type: 'ajax'
         }
     }
 });

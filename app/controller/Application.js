@@ -51,6 +51,7 @@ Ext.define('Photonetra.controller.Application', {
                 this.contactsPanel =  Ext.create('Photonetra.view.Contacts');
             }
             var contactStore = Ext.getStore('contactStore');
+            contactStore._proxy.setUrl(Photonetra.app.getServiceHostUrl() + 'users/' + Photonetra.app.getLoadedUser().user_id + '/contacts');
             contactStore.load();
             this.contactsPanel.items.get("contactListId").setStore(contactStore);
             this.getMain().push(this.contactsPanel);

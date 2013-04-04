@@ -38,6 +38,9 @@ Ext.define('Photonetra.controller.Users', {
     isLoggedIn: function(action) {
         var user = Ext.getStore('userStore');
         user.load();
+        if(user.getCount() !=0){
+            Photonetra.app.setLoadedUser(user.data.items[0]._data);
+        }
         return user.getCount() != 0;
 //       action.resume();
     },
@@ -45,7 +48,7 @@ Ext.define('Photonetra.controller.Users', {
     doLogin: function() {
         Ext.Viewport.setMasked(true);
         Ext.Ajax.request({
-            url: 'http://localhost:3000/users/authenticate',
+            url: Photonetra.app.getServiceHostUrl() + 'users/authenticate',
             method: 'POST',
             withCredentials: true,
             useDefaultXhrHeader: false,
