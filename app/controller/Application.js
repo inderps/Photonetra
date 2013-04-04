@@ -48,18 +48,8 @@ Ext.define('Photonetra.controller.Application', {
             }
             var clientStore = Ext.getStore('clientStore');
             clientStore.load();
-            this.clientList.setStore(clientStore);
+            this.clientList.items.get("clientListId").setStore(clientStore);
             this.getMain().push(this.clientList);
         }
-//
-//        if (!this.showContact) {
-//            this.showContact = Ext.create('AddressBook.view.contact.Show');
-//        }
-//
-//        // Bind the record onto the show contact view
-//        this.showContact.setRecord(record);
-
-        // Push the show contact view into the navigation view
-//        this.getMain().push(this.showContact);
     }
 });

@@ -9,6 +9,28 @@ Ext.define('Photonetra.view.Main', {
     config: {
         autoDestroy: false,
         navigationBar: {
+//            items: [
+//                {
+//                    xtype: 'tabpanel',
+//                    tabBarPosition: 'bottom',
+//                    defaults: {
+//                        styleHtmlContent: true
+//                    },
+//
+//                    items: [
+//                        {
+//                            title: 'Home',
+//                            iconCls: 'home',
+//                            html: 'Home Screen'
+//                        },
+//                        {
+//                            title: 'Contact',
+//                            iconCls: 'user',
+//                            html: 'Contact Screen'
+//                        }
+//                    ]
+//                }
+//            ]
         },
 
 //        navigationBar: {
